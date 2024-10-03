@@ -79,18 +79,13 @@ int main(void)
 
 			if (droppedFiles.count == 1) // Only support one file dropped
 			{
-				if (IsFileExtension(droppedFiles.paths[0], ".obj") ||
-					IsFileExtension(droppedFiles.paths[0], ".gltf") ||
-					IsFileExtension(droppedFiles.paths[0], ".glb") ||
-					IsFileExtension(droppedFiles.paths[0], ".vox") ||
-					IsFileExtension(droppedFiles.paths[0], ".iqm") ||
-					IsFileExtension(droppedFiles.paths[0], ".m3d"))       // Model file formats supported
+				if (IsFileExtension(droppedFiles.paths[0], ".wmo"))       // Model file formats supported
 				{
 					UnloadModel(model);                         // Unload previous model
 					model = LoadModel(droppedFiles.paths[0]);   // Load new model
 					model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture; // Set current map diffuse texture
 
-					bounds = GetMeshBoundingBox(model.meshes[0]);
+					//bounds = GetMeshBoundingBox(model.meshes[0]);
 
 					// TODO: Move camera position from target enough distance to visualize model properly
 				}
